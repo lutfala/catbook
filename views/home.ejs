@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cat Gallery</title>
+    <!--TODO add style sheet-->
+</head>
+<body>
+    
+<!--this is to avoid repetions in the coding so we create a reference that repeats-->
+<%- include('partials/navbar')%>
+
+    <% cats.forEach(cat => { %>
+        <div>
+            <div>
+                <!--for static stuff(that we are not changing where does it go? - Public folder)-->
+                <img src="/images/<%= cat.image %>" alt="cat image">
+                <div>
+            <h5><%= cat.name %></h5>
+            <p>
+                Age: <%= cat.age %> <br>
+                Favorite food: <%= cat.favoriteFood %> <br>
+                Fun fact: <%= cat.funFact %>
+            </p>
+        </div>
+        <!--form reloads the page by default and submit button sends you to home page-->
+        <div>
+            <a href="/edit/<%= cat._id%>">Edit</a>
+            <form action="/delete/<%= cat._id%>"      
+            method="POST">
+                <button type="submit">Delete</button>
+            </form>
+        </div>
+    </div>
+</div> 
+    <% }) %>
+</div> 
+</div> 
+</body>
+</html>
